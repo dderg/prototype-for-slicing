@@ -1,0 +1,27 @@
+{
+  "name": "async-styles-loader",
+  "version": "1.0.0",
+  "homepage": "https://github.com/prog666/async-styles-loader",
+  "authors": [
+    "Danila <dergachev.d@future-group.ru>"
+  ],
+  "description": "loads styles into the Localstorage",
+  "main": "async-style-js",
+  "keywords": [
+    "async",
+    "cache",
+    "styles",
+    "css",
+    "fonts",
+    "localstorage",
+    "defer"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
