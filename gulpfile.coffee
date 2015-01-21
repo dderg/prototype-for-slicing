@@ -21,19 +21,27 @@ gulp.task "jade", ->
     .pipe gulp.dest "./html"
     .pipe do connect.reload
 
-gulp.task "styl", ["css"], ->
-  gulp.src "./styl/*.styl"
+gulp.task "important", ["impcss"], ->
+  gulp.src "./styl/important.styl"
+    .pipe do stylus
+    .pipe do autoprefixer
+    .pipe gulp.dest "./css"
+
+gulp.task "main", ["maincss"], ->
+  gulp.src "./styl/main.styl"
     .pipe do stylus
     .pipe do autoprefixer
     .pipe cssBase64 maxWeightResourse: 8192
     .pipe gulp.dest "./css"
 
-gulp.task "css", ->
+
+gulp.task "impcss", ->
   gulp.src ['./css/normalize.css','./css/important.css']
       .pipe concat "imp.css"
       .pipe do minify
       .pipe gulp.dest "./css"
       .pipe do connect.reload
+gulp.task "maincss", ->
   gulp.src ['./css/pure.css','./css/main.css']
       .pipe concat "all.css"
       .pipe do minify
@@ -57,9 +65,10 @@ gulp.task "js", ->
 
 
 gulp.task 'watch', ->
-  gulp.watch './styl/*.styl', ['styl']
+  gulp.watch './styl/main.styl', ['main']
+  gulp.watch './styl/important.styl', ['important']
   gulp.watch './coffee/main.coffee', ['coffee']
   gulp.watch './jade/*.jade', ["jade"]
 
 
-gulp.task "default", ["connect","jade","css","coffee","watch"]
+gulp.task "default", ["connect","jade","main","important","coffee","watch"]
