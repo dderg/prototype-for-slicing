@@ -27,6 +27,7 @@ gulp.task "important",  ->
     .pipe do stylus
     .pipe do autoprefixer
     .pipe addsrc.prepend "./css/normalize.css"
+    .pipe concat "imp.css"
     .pipe do minify
     .pipe gulp.dest "./css"
     .pipe do connect.reload
