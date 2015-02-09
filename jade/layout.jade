@@ -7,13 +7,10 @@ head
 	style
 		include ../css/imp.css
 	script
-		| if(document.all && !document.addEventListener){
-		| 	getStyleAsync("../css/fonts_ie8.css?ver=1.0.0",'fonts_ie8');
-		| } else {
-		| 	getStyleAsync("../css/fonts.css?ver=1.0.0",'fonts');
-		| }
-		| //getStyleAsync("../css/all.css?ver=1.0.0",'all');
 		include ../bower_components/async-styles-loader/async-style.min.js
+		| getFont("../css/fonts.css","../css/fonts_ie8.css", "1.0.0")
+		| //getStyleAsync("../css/all.css?ver=1.0.0",'all');
 	link(rel="stylesheet", href="../css/all.css")
 body
 	block content
+	script(type="text/javascript", src="../js/all.js", async="async")

@@ -47,12 +47,9 @@ gulp.task "main", ->
 gulp.task "coffee", ["js"], ->
   gulp.src "./coffee/main.coffee"
     .pipe do coffee
-    .pipe gulp.dest "./js"
-
-gulp.task "js", ->
-  gulp.src ["./js/main.js"]
+    .pipe addsrc.prepend[""]
     .pipe concat "all.js"
-    .pipe do uglify
+    #.pipe do uglify
     .pipe gulp.dest "./js"
     .pipe do connect.reload
 

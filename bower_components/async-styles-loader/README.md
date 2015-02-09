@@ -8,6 +8,11 @@ getStyleAsync(path,name);
 path is css file path
 name could be anything, it's just so you can store multiple files in localstorage
 
+## Installation
+via Bower
+
+`bower install async-styles-loader`
+
 ## Example
 ```
 if(document.all && !document.addEventListener){
@@ -17,6 +22,7 @@ if(document.all && !document.addEventListener){
 }
 getStyleAsync("../css/all.css?ver=1.0.2",'all');
 ```
+
 
 ### async-styles-loader
 
