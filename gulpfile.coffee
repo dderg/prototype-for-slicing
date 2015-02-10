@@ -8,7 +8,13 @@ addsrc = require "gulp-add-src"
 minify = require "gulp-minify-css"
 cssBase64 = require "gulp-css-base64"
 jade = require "gulp-jade"
+tinypng = require "gulp-tinypng"
 autoprefixer = require "gulp-autoprefixer"
+
+gulp.task "tiny", ->
+  gulp.src "./images/*"
+    .pipe tinypng "CrKRqfc7Q8-r-MpAro6PhQNoukdI9wh1"
+    .pipe gulp.dest "./images/"
 
 gulp.task "connect", ->
   connect.server
@@ -37,7 +43,7 @@ gulp.task "main", ->
     .pipe do stylus
     .pipe do autoprefixer
     .pipe cssBase64 maxWeightResourse: 8192
-    .pipe addsrc.prepend "./css/pure.css"
+    .pipe addsrc.prepend "./css/grid.css"
     .pipe concat "all.css"
     .pipe do minify
     .pipe gulp.dest "./css"
@@ -47,7 +53,7 @@ gulp.task "main", ->
 gulp.task "coffee", ["js"], ->
   gulp.src "./coffee/main.coffee"
     .pipe do coffee
-    .pipe addsrc.prepend[""]
+    #.pipe addsrc.prepend [""]
     .pipe concat "all.js"
     #.pipe do uglify
     .pipe gulp.dest "./js"
