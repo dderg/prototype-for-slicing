@@ -1,16 +1,16 @@
 doctype html
 html(lang="ru")
-head
-	meta(charset="UTF-8")
-	title Document
-	meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
-	style
-		include ../css/imp.css
-	script
-		include ../bower_components/async-styles-loader/async-style.min.js
-		| getFont("../css/fonts.css","../css/fonts_ie8.css", "1.0.0")
-		| //getStyleAsync("../css/all.css?ver=1.0.0",'all');
-	link(rel="stylesheet", href="../css/all.css")
-body
-	block content
-	script(type="text/javascript", src="../js/all.js", async="async")
+	head
+		meta(charset="UTF-8")
+		title Document
+		meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+		style
+			include ../css/imp.css
+		script
+			include ../bower_components/async-styles-loader/async-style.min.js
+			| getFont("../css/fonts.css","../css/fonts_ie8.css", "1.0.0")
+			| //getStyleAsync("../css/all.css?ver=1.0.0",'all');
+		link(rel="stylesheet", href="../css/all.css")
+	body
+		block content
+		script(type="text/javascript", src="../js/all.js", async="async")	
