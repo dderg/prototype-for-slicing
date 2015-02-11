@@ -50,7 +50,7 @@ gulp.task "main", ->
     .pipe do connect.reload
 
 
-gulp.task "coffee", ["js"], ->
+gulp.task "coffee", ->
   gulp.src "./coffee/main.coffee"
     .pipe do coffee
     #.pipe addsrc.prepend [""]
