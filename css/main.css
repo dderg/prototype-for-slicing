@@ -200,7 +200,7 @@ img {
 .row {
   word-spacing: -0.43em;
 }
-.row [class *= "{colsclassname}"],
+.row [class *= "cols"],
 .cols {
 /* font-family: sans-serif; */
   display: inline-block;
@@ -216,11 +216,58 @@ img {
   margin: 0 auto;
 }
 .cols,
-.row [class *= "{colsclassname}"] {
+.row [class *= "cols"] {
   padding: 0 15px;
 }
 *,
 *:after,
 *:before {
   box-sizing: border-box;
+}
+.cols-1 {
+  width: 8.3333%;
+  *width: 8.3023%;
+}
+.cols-2 {
+  width: 16.6667%;
+  *width: 16.6357%;
+}
+.cols-3 {
+  width: 25%;
+  *width: 24.969%;
+}
+.cols-4 {
+  width: 33.3333%;
+  *width: 33.3023%;
+}
+.cols-5 {
+  width: 41.6667%;
+  *width: 41.6357%;
+}
+.cols-6 {
+  width: 50%;
+  *width: 49.969%;
+}
+.cols-7 {
+  width: 58.3333%;
+  *width: 58.3023%;
+}
+.cols-8 {
+  width: 66.6667%;
+  *width: 66.6357%;
+}
+.cols-9 {
+  width: 75%;
+  *width: 74.969%;
+}
+.cols-10 {
+  width: 83.3333%;
+  *width: 83.3023%;
+}
+.cols-11 {
+  width: 91.6667%;
+  *width: 91.6357%;
+}
+.cols-12 {
+  width: 100%;
 }
