@@ -27,9 +27,6 @@ setWidth(classname, width)
 
 
 cols(amount, from = false, suffix = false)
-    unless from
-        from = default-cols
-    width = round((100% / from * amount),4)
 
     if suffix
         classname = colsclassname+"-"+suffix+"-"+amount+"-"+from
@@ -37,6 +34,9 @@ cols(amount, from = false, suffix = false)
         classname = colsclassname+"-"+amount+"-"+from
     else
         classname = colsclassname+"-"+amount
+    unless from
+        from = default-cols
+    width = round((100% / from * amount),4)
     setWidth(classname, width)
 
 
