@@ -175,16 +175,56 @@ th,
 td {
   padding: 0;
 }
-*,
-*:after,
-*:before {
-  box-sizing: border-box;
+[hidden] {
+  display: none !important;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+.row {
+  letter-spacing: -0.31em; /* Webkit: collapse white-space between units */
+  *letter-spacing: normal;
+/* reset IE < 8 */
+  *word-spacing: -0.43em;
+/* IE < 8: collapse white-space between units */
+  text-rendering: optimizespeed; /* Webkit: fixes text-rendering: optimizeLegibility */
+  display: -webkit-flex;
+  -webkit-flex-flow: row wrap;
+/* IE10 uses display: flexbox */
+  display: -ms-flexbox;
+  -ms-flex-flow: row wrap;
+}
+.opera-only :-o-prefocus,
+.row {
+  word-spacing: -0.43em;
+}
+.row [class *= "{colsclassname}"],
+.cols {
+/* font-family: sans-serif; */
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  letter-spacing: normal;
+  word-spacing: normal;
+  vertical-align: top;
+  text-rendering: auto;
 }
 .row {
   max-width: 1024px;
   margin: 0 auto;
 }
 .cols,
-.row [class *= "cols"] {
+.row [class *= "{colsclassname}"] {
   padding: 0 15px;
+}
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+.cols-1-1,
+.cols-5-5 {
+  width: 100%;
 }

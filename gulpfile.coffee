@@ -29,7 +29,7 @@ gulp.task "jade", ->
 
 
 gulp.task "main", ->
-  gulp.src "./styl/*.styl"
+  gulp.src ["./styl/*.styl","!./styl/_*.styl"]
     .pipe do stylus
     .pipe do autoprefixer
     .pipe cssBase64 maxWeightResourse: 8192
