@@ -1,7 +1,11 @@
-colsclassname = "cols"
-rowclassname = "row"
+colsclassname ?= "cols"
+rowclassname ?= "row"
+default-cols ?= 12
+maxWidth ?= 1024px
+padding ?= 15px
 
-default-cols = 12
+
+
 existing = (1 -1),(2 -1) // did not find to init empty array with files
 setWidth(classname, width)
     exists = false
@@ -37,7 +41,7 @@ cols(amount, from = false, suffix = false)
 
 
 /**
- * Extra rules that Pure adds on top of Normalize.css
+ * Extra rules that grid adds on top of Normalize.css
  */
 
 /**
@@ -97,11 +101,11 @@ this the same font stack that Normalize.css sets for the `body`.
     text-rendering: auto;
 }
 .{rowclassname}
-    max-width 1024px
+    max-width maxWidth
     margin 0 auto
 .{colsclassname},
 .{rowclassname} [class *= "{colsclassname}"]
-    padding 0 15px
+    padding 0 padding
 
 
 
@@ -109,7 +113,3 @@ this the same font stack that Normalize.css sets for the `body`.
 *:after,
 *:before
     box-sizing border-box
-
-
-cols(1,1)
-cols(5,5)

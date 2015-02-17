@@ -224,7 +224,3 @@ img {
 *:before {
   box-sizing: border-box;
 }
-.cols-1-1,
-.cols-5-5 {
-  width: 100%;
-}
