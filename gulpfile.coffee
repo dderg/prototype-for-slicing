@@ -19,7 +19,6 @@ gulp.task "connect", ->
   connect.server
     port: 1337
     livereload: on
-    root: "./"
 
 gulp.task "jade", ->
   gulp.src "./jade/*.jade"
