@@ -21,21 +21,32 @@ gulp.task "connect", ->
     livereload: on
 
 gulp.task "jade", ->
-  gulp.src "./jade/*.jade"
+  gulp.src ["./jade/*.jade", "!./jade/_*.jade"]
     .pipe jade pretty: on
     .pipe gulp.dest "./html"
     .pipe do connect.reload
 
 
 gulp.task "main", ->
-  gulp.src ["./styl/*.styl","!./styl/_*.styl"]
+  gulp.src ["./styl/*.styl","!./styl/_*.styl","!./styl/fonts.styl","!./styl/fonts_ie8.styl"]
     .pipe do stylus
     .pipe do autoprefixer
-    .pipe cssBase64 maxWeightResourse: 8192
+    .pipe cssBase64 {maxWeightResourse: 512}
     #.pipe do minify
     .pipe gulp.dest "./css"
     .pipe do connect.reload
 
+
+gulp.task "fonts", ->
+  gulp.src "./styl/fonts.styl"
+    .pipe do stylus
+    .pipe do cssBase64
+    .pipe do minify
+    .pipe gulp.dest "./css"
+  gulp.src "./styl/fonts_ie8.styl"
+    .pipe do stylus
+    .pipe do minify
+    .pipe gulp.dest "./css"
 
 gulp.task "coffee", ->
   gulp.src "./coffee/*.coffee"
