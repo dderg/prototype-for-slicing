@@ -9,11 +9,14 @@ cssBase64 = require "gulp-css-base64"
 jade = require "gulp-jade"
 tinypng = require "gulp-tinypng"
 autoprefixer = require "gulp-autoprefixer"
+rjs = require "gulp-requirejs"
+clean = require "gulp-clean"
+addsrc = require "gulp-add-src"
 
 gulp.task "tiny", ->
-  gulp.src "./images/*"
+  gulp.src "images/**/*"
     .pipe tinypng "CrKRqfc7Q8-r-MpAro6PhQNoukdI9wh1"
-    .pipe gulp.dest "./images/"
+    .pipe gulp.dest "images/"
 
 gulp.task "connect", ->
   connect.server
@@ -21,44 +24,51 @@ gulp.task "connect", ->
     livereload: on
 
 gulp.task "jade", ->
-  gulp.src ["./jade/*.jade", "!./jade/_*.jade"]
+  gulp.src ["jade/*.jade", "!jade/_*.jade"]
     .pipe jade pretty: on
     .pipe gulp.dest "./html"
     .pipe do connect.reload
 
 
-gulp.task "main", ->
-  gulp.src ["./styl/*.styl","!./styl/_*.styl","!./styl/fonts.styl","!./styl/fonts_ie8.styl"]
+gulp.task "stylus", ->
+  gulp.src ["styl/main.styl"]
     .pipe do stylus
     .pipe do autoprefixer
-    .pipe cssBase64 {maxWeightResourse: 512}
-    #.pipe do minify
+    # .pipe addsrc.prepend []
+    .pipe concat "all.css"
+    .pipe cssBase64 {maxWeightResource: 1536}
+    .pipe do minify
     .pipe gulp.dest "./css"
     .pipe do connect.reload
 
-
-gulp.task "fonts", ->
-  gulp.src "./styl/fonts.styl"
-    .pipe do stylus
-    .pipe do cssBase64
-    .pipe do minify
-    .pipe gulp.dest "./css"
-  gulp.src "./styl/fonts_ie8.styl"
-    .pipe do stylus
-    .pipe do minify
-    .pipe gulp.dest "./css"
 
 gulp.task "coffee", ->
-  gulp.src "./coffee/*.coffee"
+  gulp.src "coffee/*.coffee"
     .pipe do coffee
-    #.pipe do uglify
-    .pipe gulp.dest "./js"
-    .pipe do connect.reload
+    .pipe gulp.dest "build"
+
+gulp.task "build", ["coffee"], ->
+  rjs
+    baseUrl: "."
+    name: "bower_components/almond/almond"
+    include: ["build/main"]
+    insertRequire: ["build/main"]
+    out: "all.js"
+    wrap: on
+    paths:
+      jquery: "bower_components/jquery/dist/jquery.min"
+
+  .pipe do uglify
+  .pipe gulp.dest "js"
+  .pipe do connect.reload
+
+  gulp.src "build/", read: no
+    .pipe do clean
 
 gulp.task 'watch', ->
-  gulp.watch './styl/*.styl', ['main']
-  gulp.watch './coffee/*.coffee', ['coffee']
-  gulp.watch './jade/*.jade', ["jade"]
+  gulp.watch 'styl/*.styl', ['stylus']
+  gulp.watch 'coffee/*.coffee', ['build']
+  gulp.watch 'jade/*.jade', ["jade"]
 
 
-gulp.task "default", ["connect","jade","main","coffee","watch"]
+gulp.task "default", ["connect","jade","stylus","build","watch"]
