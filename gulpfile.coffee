@@ -67,7 +67,7 @@ gulp.task "build", ["coffee"], ->
     out: "all.js"
     wrap: on
     paths:
-      jquery: "bower_components/jquery/dist/jquery.min"
+      jquery: "bower_components/jquery/dist/jquery"
 
   .pipe do uglify
   .pipe gulp.dest "js"
