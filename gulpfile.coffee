@@ -12,6 +12,12 @@ autoprefixer = require "gulp-autoprefixer"
 rjs = require "gulp-requirejs"
 rimraf = require "rimraf"
 addsrc = require "gulp-add-src"
+filter = require "gulp-filter"
+mainBowerFiles = require "main-bower-files"
+plugins = require("gulp-load-plugins")(
+    pattern: ["gulp-*","gulp.*","main-bower-files"]
+    replaceString: /\bgulp[\-.]/
+  )
 
 gulp.task "tiny", ->
   gulp.src "images/**/*"
@@ -34,7 +40,8 @@ gulp.task "stylus", ->
   gulp.src ["styl/main.styl"]
     .pipe do stylus
     .pipe do autoprefixer
-    # .pipe addsrc.prepend []
+    .pipe addsrc.prepend(plugins.mainBowerFiles())
+    .pipe filter "*.css"
     .pipe concat "all.css"
     .pipe cssBase64 {maxWeightResource: 512}
     .pipe do minify
@@ -60,14 +67,20 @@ gulp.task "coffee", ->
 
 gulp.task "build", ["coffee"], (cb) ->
   rjs
-    baseUrl: "."
+    baseUrl: "./"
     name: "bower_components/almond/almond"
     include: ["build/main"]
     insertRequire: ["build/main"]
     out: "all.js"
     wrap: on
+    findNestedDependencies: on
     paths:
       jquery: "bower_components/jquery/dist/jquery"
+      slick: "bower_components/slick-carousel/slick/slick"
+      headermenu: "build/headermenu"
+      jquerybem: "bower_components/jquery.bem/jquery.bem"
+    shim:
+      jquerybem: ["jquery"]
 
   .pipe do uglify
   .pipe gulp.dest "js"
