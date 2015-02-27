@@ -36,7 +36,7 @@ gulp.task "stylus", ->
     .pipe do autoprefixer
     # .pipe addsrc.prepend []
     .pipe concat "all.css"
-    .pipe cssBase64 {maxWeightResource: 1536}
+    .pipe cssBase64 {maxWeightResource: 512}
     .pipe do minify
     .pipe gulp.dest "./css"
     .pipe do connect.reload
