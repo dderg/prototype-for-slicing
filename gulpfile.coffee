@@ -10,7 +10,7 @@ jade = require "gulp-jade"
 tinypng = require "gulp-tinypng"
 autoprefixer = require "gulp-autoprefixer"
 rjs = require "gulp-requirejs"
-clean = require "gulp-clean"
+rimraf = require "rimraf"
 addsrc = require "gulp-add-src"
 
 gulp.task "tiny", ->
@@ -58,7 +58,7 @@ gulp.task "coffee", ->
     .pipe do coffee
     .pipe gulp.dest "build"
 
-gulp.task "build", ["coffee"], ->
+gulp.task "build", ["coffee"], (cb) ->
   rjs
     baseUrl: "."
     name: "bower_components/almond/almond"
@@ -73,8 +73,7 @@ gulp.task "build", ["coffee"], ->
   .pipe gulp.dest "js"
   .pipe do connect.reload
 
-  gulp.src "build/", read: no
-    .pipe do clean
+  rimraf "./build", cb
 
 gulp.task 'watch', ->
   gulp.watch 'styl/*.styl', ['stylus']
