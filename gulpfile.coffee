@@ -50,12 +50,12 @@ gulp.task "stylus", ->
 
 
 gulp.task "fonts", ->
-  gulp.src "./styl/fonts.styl"
+  gulp.src "./fonts/fonts.styl"
     .pipe do stylus
     .pipe do cssBase64
     .pipe do minify
     .pipe gulp.dest "./css"
-  gulp.src "./styl/fonts_ie8.styl"
+  gulp.src "./fonts/fonts_ie8.styl"
     .pipe do stylus
     .pipe do minify
     .pipe gulp.dest "./css"
