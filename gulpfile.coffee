@@ -44,7 +44,7 @@ gulp.task "stylus", ->
     .pipe filter "*.css"
     .pipe concat "all.css"
     .pipe cssBase64 {maxWeightResource: 512}
-    .pipe do minify
+    .pipe minify compatibility: "ie8", noAdvanced: true
     .pipe gulp.dest "./css"
     .pipe do connect.reload
 
