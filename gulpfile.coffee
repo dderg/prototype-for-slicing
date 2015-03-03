@@ -41,9 +41,9 @@ gulp.task "stylus", ->
     .pipe do stylus
     .pipe do autoprefixer
     .pipe addsrc.prepend(plugins.mainBowerFiles())
+    .pipe cssBase64 maxWeightResource: 512
     .pipe filter "*.css"
     .pipe concat "all.css"
-    .pipe cssBase64 {maxWeightResource: 512}
     .pipe minify compatibility: "ie8", noAdvanced: true
     .pipe gulp.dest "./css"
     .pipe do connect.reload
