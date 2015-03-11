@@ -10,8 +10,9 @@ jade = require "gulp-jade"
 tinypng = require "gulp-tinypng"
 autoprefixer = require "gulp-autoprefixer"
 rjs = require "gulp-requirejs"
-rimraf = require "rimraf"
+# rimraf = require "rimraf"
 addsrc = require "gulp-add-src"
+cmq = require "gulp-combine-media-queries"
 filter = require "gulp-filter"
 mainBowerFiles = require "main-bower-files"
 plugins = require("gulp-load-plugins")(
@@ -39,15 +40,15 @@ gulp.task "jade", ->
 gulp.task "stylus", ->
   gulp.src ["styl/main.styl"]
     .pipe do stylus
+    .pipe do cmq
     .pipe do autoprefixer
-    .pipe addsrc.prepend(plugins.mainBowerFiles())
-    .pipe cssBase64 maxWeightResource: 512
+    .pipe addsrc.prepend(mainBowerFiles())
+    .pipe cssBase64 maxWeightResource: 1024
     .pipe filter "*.css"
     .pipe concat "all.css"
-    .pipe minify compatibility: "ie8", noAdvanced: true
+    .pipe minify compatibility: "ie9", noAdvanced: true
     .pipe gulp.dest "./css"
     .pipe do connect.reload
-
 
 gulp.task "fonts", ->
   gulp.src "./fonts/fonts.styl"
@@ -76,8 +77,6 @@ gulp.task "build", ["coffee"], (cb) ->
     findNestedDependencies: on
     paths:
       jquery: "bower_components/jquery/dist/jquery"
-      slick: "bower_components/slick-carousel/slick/slick"
-      headermenu: "build/headermenu"
       jquerybem: "bower_components/jquery.bem/jquery.bem"
     shim:
       jquerybem: ["jquery"]
@@ -86,7 +85,7 @@ gulp.task "build", ["coffee"], (cb) ->
   .pipe gulp.dest "js"
   .pipe do connect.reload
 
-  rimraf "./build", cb
+  # rimraf "./build", cb
 
 gulp.task 'watch', ->
   gulp.watch 'styl/*.styl', ['stylus']
