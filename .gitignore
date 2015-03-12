@@ -1,6 +1,5 @@
 node_modules
 src/bower_components
-./*.html
-./css
-./js
-./images
+*.html
+css
+js
