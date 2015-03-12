@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script>var getFont,getStyleAsync;getStyleAsync=function(e,t){var n,o,a,l,c;c=function(e,t,n){e.addEventListener?e.addEventListener(t,n,!1):e.attachEvent&&e.attachEvent("on"+t,n)},n=function(e){return window.localStorage&&localStorage[t]&&localStorage[t+"_file"]===e},a=function(){var a,c;window.localStorage&&window.XMLHttpRequest?n(e)?l(localStorage[t]):(c=new XMLHttpRequest,c.open("GET",e,!0),c.onreadystatechange=function(){4===c.readyState&&(l(c.responseText),localStorage[t]=c.responseText,localStorage[t+"_file"]=e)},c.send()):(a=document.createElement("link"),a.href=e,a.rel="stylesheet",a.type="text/css",o.appendChild(a),document.cookie=t)},l=function(e){var t;t=document.createElement("style"),t.setAttribute("type","text/css"),t.styleSheet?t.styleSheet.cssText=e:t.innerHTML=e,o.appendChild(t)},o=document.getElementsByTagName("head")[0],window.localStorage&&localStorage[t]||document.cookie.indexOf(t)>-1?a():window.addEventListener?c(window,"DOMContentLoaded",a):c(window,"load",a)},getFont=function(e,t,n){return document.all&&!document.addEventListener?getStyleAsync(t+"?ver="+n,"fonts_ie8"):getStyleAsync(e+"?ver="+n,"fonts")};getFont("../css/fonts.css","../css/fonts_ie8.css", "1.0.0")
+      //getStyleAsync("../css/all.css?ver=1.0.0",'all');
+    </script>
+    <link rel="stylesheet" href="../css/all.css">
+  </head>
+  <body>
+    <header class="header">
+      <div class="row">
+        <div class="cols-12"></div>
+      </div>
+    </header>
+    <script type="text/javascript" src="../js/all.js" async="async"></script>
+  </body>
+</html>
