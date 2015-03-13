@@ -21,10 +21,14 @@ plugins = require("gulp-load-plugins")(
   )
 
 gulp.task "tiny", ->
-  gulp.src ["src/images/**/*","src/images/*"]
+  gulp.src ["src/images/*"]
     .pipe filter ["*.jpg","*.png"]
     .pipe tinypng "CrKRqfc7Q8-r-MpAro6PhQNoukdI9wh1"
     .pipe gulp.dest "images"
+  gulp.src ["src/images/icons/*"]
+    .pipe filter ["*.jpg","*.png"]
+    .pipe tinypng "CrKRqfc7Q8-r-MpAro6PhQNoukdI9wh1"
+    .pipe gulp.dest "images/icons"
 
 gulp.task "connect", ->
   connect.server
@@ -61,6 +65,8 @@ gulp.task "fonts", ->
     .pipe do stylus
     .pipe do minify
     .pipe gulp.dest "css"
+  gulp.src ["src/fonts/*","!src/fonts/*.css","!src/fonts/*.styl"]
+    .pipe gulp.dest "fonts"
 
 gulp.task "coffee", ->
   gulp.src "src/coffee/*.coffee"
@@ -86,7 +92,8 @@ gulp.task "build", ["coffee"], (cb) ->
   .pipe gulp.dest "js"
   .pipe do connect.reload
 
-  # rimraf "./build", cb
+  # rimraf "./build", 
+  cb()
 
 gulp.task 'watch', ->
   gulp.watch 'src/styl/*.styl', ['stylus']
