@@ -14,6 +14,7 @@ cmq = require "gulp-combine-media-queries"
 filter = require "gulp-filter"
 mainBowerFiles = require "main-bower-files"
 browserSync = require "browser-sync"
+sftp = require "gulp-sftp"
 plugins = require("gulp-load-plugins")(
     pattern: ["gulp-*","gulp.*","main-bower-files"]
     replaceString: /\bgulp[\-.]/
@@ -24,23 +25,31 @@ gulp.task "tiny", ->
   gulp.src ["src/images/*"]
     .pipe filter ["*.jpg","*.png"]
     .pipe tinypng "CrKRqfc7Q8-r-MpAro6PhQNoukdI9wh1"
-    .pipe gulp.dest "images"
+    .pipe gulp.dest "dist/images"
   gulp.src ["src/images/icons/*"]
     .pipe filter ["*.jpg","*.png"]
     .pipe tinypng "CrKRqfc7Q8-r-MpAro6PhQNoukdI9wh1"
-    .pipe gulp.dest "images/icons"
+    .pipe gulp.dest "dist/images/icons"
 
 gulp.task "browser-sync", ->
   browserSync
     server:
-      baseDir: "./"
+      baseDir: "./dist"
     port: 1337
     open: false
+
+gulp.task "sftp", ->
+  gulp.src "dist/**/*"
+      .pipe sftp
+          host: "fugr.ru"
+          user: "fmake.ru"
+          # pass: ""
+          # remotePath: "/var/www/vhosts/fmake.ru/danil.fmake.ru/"
 
 gulp.task "jade", ->
   gulp.src ["src/jade/*.jade", "!src/jade/_*.jade"]
     .pipe jade pretty: on
-    .pipe gulp.dest ""
+    .pipe gulp.dest "dist"
     .pipe reload stream: yes
 
 
@@ -54,7 +63,7 @@ gulp.task "stylus", ->
     .pipe filter "*.css"
     .pipe concat "all.css"
     # .pipe minify compatibility: "ie9", noAdvanced: true
-    .pipe gulp.dest "css"
+    .pipe gulp.dest "dist/css"
     .pipe reload stream: yes
 
 gulp.task "fonts", ->
@@ -62,11 +71,11 @@ gulp.task "fonts", ->
     .pipe do stylus
     .pipe do cssBase64
     .pipe do minify
-    .pipe gulp.dest "css"
+    .pipe gulp.dest "dist/css"
   gulp.src "src/fonts/fonts_ie8.styl"
     .pipe do stylus
     .pipe do minify
-    .pipe gulp.dest "css"
+    .pipe gulp.dest "dist/css"
   gulp.src ["src/fonts/*","!src/fonts/*.css","!src/fonts/*.styl"]
     .pipe gulp.dest "fonts"
 
@@ -77,7 +86,7 @@ gulp.task "build", (cb) ->
       transform: ["coffeeify", "debowerify"]
     .pipe concat "all.js"
     # .pipe do uglify
-    .pipe gulp.dest "js"
+    .pipe gulp.dest "dist/js"
     .pipe reload stream: yes
 
 

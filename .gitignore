@@ -1,5 +1,3 @@
 node_modules
 src/bower_components
-*.html
-css
-js
+dist
