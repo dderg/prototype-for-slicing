@@ -1,4 +1,3 @@
-prototype
-=========
-
-styl, jade, coffee proto with gulp
+```
+npm i && bower i && gulp
+```
