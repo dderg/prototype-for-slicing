@@ -6,7 +6,7 @@ requireDir './gulp/tasks', { recurse: true }
 
 gulp.task "production", ->
   global.production = true
-  runSequence "clean", "build", "sftp"
+  runSequence "build", "sftp"
 
 
 gulp.task "default", ->
