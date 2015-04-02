@@ -48,6 +48,8 @@ module.exports =
     src: "#{src}/coffee/main.coffee"
     destName: "all.js"
     dest: "#{dist}/js"
+    transform: ["coffeeify"]
+    extensions: [".coffee"]
 
   watch:
     src: src

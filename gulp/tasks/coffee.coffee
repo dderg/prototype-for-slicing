@@ -21,7 +21,8 @@ gulp.task "coffee", (cb) ->
   gulp.src config.src, read: no
     .pipe notify "coffee start"
     .pipe browserify
-      transform: ["coffeeify", "debowerify"]
+      transform: config.transform,
+      extensions: config.extensions
     .pipe concat config.destName
     .pipe gulpif global.production, do uglify
     .pipe gulp.dest config.dest

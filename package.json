@@ -12,7 +12,6 @@
     "browser-sync": "^2.2.4",
     "coffee-script": "^1.9.0",
     "coffeeify": "^1.0.0",
-    "debowerify": "^1.2.0",
     "gulp": "^3.8.11",
     "gulp-add-src": "^0.2.0",
     "gulp-autoprefixer": "^2.1.0",
@@ -34,5 +33,8 @@
     "require-dir": "^0.3.0",
     "rimraf": "^2.3.2",
     "run-sequence": "^1.0.2"
+  },
+  "dependencies": {
+    "jquery": "^2.1.3"
   }
 }
