@@ -31,7 +31,7 @@ module.exports =
     apikey: "CrKRqfc7Q8-r-MpAro6PhQNoukdI9wh1"
 
   images:
-    src: "#{src}/images"
+    src: "#{src}/images/**/*"
     dest: "#{dist}/images"
 
   sftp:
