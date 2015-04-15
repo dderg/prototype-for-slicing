@@ -13,7 +13,7 @@ runSequence = require "run-sequence"
 config  = require("../config").tiny
 
 gulp.task "tiny", ->
-  runSequence "compress", "cleanTiny"
+  runSequence "compress", ["cleanTiny", "images"]
 
 gulp.task "compress", ->
   gulp.src ["#{config.src}/**/*.jpg", "#{config.src}/**/*.png"]
