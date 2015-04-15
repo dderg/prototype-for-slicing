@@ -4,7 +4,7 @@ runSequence = require "run-sequence"
 
 requireDir './gulp/tasks', { recurse: true }
 
-gulp.task "production", ->
+gulp.task "release", ->
   global.production = true
   runSequence "build", "sftp"
 
