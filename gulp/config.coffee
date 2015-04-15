@@ -16,6 +16,10 @@ module.exports =
       baseDir: dist
     port: 1337
     open: false
+    ghostMode:
+      clicks: false
+      forms: false
+      scroll: false
 
   clean:
     dest: dist
