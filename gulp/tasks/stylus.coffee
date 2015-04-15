@@ -22,14 +22,12 @@ mainBowerFiles      = require "main-bower-files"
 minify              = require "gulp-minify-css"
 cssBase64           = require "gulp-css-base64"
 concat              = require "gulp-concat"
-notify              = require "gulp-notify"
 
 config              = require("../config").stylus
 
 
 gulp.task "stylus", ->
   gulp.src config.src
-    .pipe notify "stylus start"
     .pipe do stylus
     .pipe do autoprefixer
     .pipe do combineMediaQueries
@@ -40,4 +38,3 @@ gulp.task "stylus", ->
     .pipe gulpif global.production, minify compatibility: config.minify.compatibility, noAdvanced: true
     .pipe gulp.dest config.dest
     .pipe reload stream: yes
-    .pipe notify "stylus done"

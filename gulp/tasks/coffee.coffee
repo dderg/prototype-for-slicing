@@ -19,7 +19,6 @@ config      = require("../config").coffee
 
 gulp.task "coffee", (cb) ->
   gulp.src config.src, read: no
-    .pipe notify "coffee start"
     .pipe browserify
       transform: config.transform,
       extensions: config.extensions
