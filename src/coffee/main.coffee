@@ -6,4 +6,4 @@
 #   window.mobile = matches: false
 # mobile = window.mobile
 
-$ = require "jquery"
+# $ = require "jquery"
