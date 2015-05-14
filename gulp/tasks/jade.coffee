@@ -13,7 +13,7 @@ reload      = browserSync.reload
 config      = require("../config").jade
 
 gulp.task "jade", ->
-  gulp.src ["#{config.src}/*.jade", "!#{config.src}/_*.jade"]
+  gulp.src ["#{config.src}/**/*.jade", "!#{config.src}/_**/*.jade"]
     .pipe jade pretty: on
     .pipe gulp.dest config.dest
     .pipe reload stream: yes
