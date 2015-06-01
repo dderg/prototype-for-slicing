@@ -5,9 +5,9 @@
 # Очищает папку сгенерированных файлов
 
 gulp   = require "gulp"
-rimraf = require "rimraf"
+del = require "del"
 
 config = require("../config").clean
 
 gulp.task "clean", (cb) ->
-  rimraf config.dest, cb
+  del config.dest, cb

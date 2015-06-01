@@ -39,21 +39,21 @@ module.exports =
     dest: "#{dist}/images"
 
   sftp:
-    host: "fugr.ru"
-    user: "fmake.ru"
+    host: ""
+    user: ""
     pass: ""
-    remotePath: "/var/www/vhosts/fmake.ru/danil.fmake.ru/"
+    remotePath: "/var/www/fmake/data/www/front-end.fmake.ru"
 
   jade:
     src: "#{src}/jade"
     dest: dist
 
-  coffee:
-    src: "#{src}/coffee/main.coffee"
+  js:
+    src: "#{src}/js/main.js"
     destName: "all.js"
     dest: "#{dist}/js"
-    transform: ["coffeeify"]
-    extensions: [".coffee"]
+    transform: ["babelify"]
+    extensions: [".es6"]
 
   watch:
     src: src

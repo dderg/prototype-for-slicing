@@ -9,15 +9,14 @@ gulpif      = require "gulp-if"
 browserify  = require "gulp-browserify"
 uglify      = require "gulp-uglify"
 concat      = require "gulp-concat"
-notify      = require "gulp-notify"
 
 browserSync = require "browser-sync"
 reload      = browserSync.reload
 
-config      = require("../config").coffee
+config      = require("../config").js
 
 
-gulp.task "coffee", (cb) ->
+gulp.task "js", (cb) ->
   gulp.src config.src, read: no
     .pipe browserify
       transform: config.transform,
@@ -26,4 +25,3 @@ gulp.task "coffee", (cb) ->
     .pipe gulpif global.production, do uglify
     .pipe gulp.dest config.dest
     .pipe reload stream: yes
-    .pipe notify "coffee done"

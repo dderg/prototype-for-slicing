@@ -6,7 +6,7 @@
 
 gulp    = require "gulp"
 tinypng = require "gulp-tinypng"
-rimraf  = require "gulp-rimraf"
+del  = require "del"
 runSequence = require "run-sequence"
 
 config  = require("../config").tiny
@@ -18,6 +18,6 @@ gulp.task "compress", ->
   gulp.src ["#{config.src}/**/*.jpg", "#{config.src}/**/*.png"]
     .pipe tinypng config.apikey
     .pipe gulp.dest config.dest
-gulp.task "cleanTiny", ->
-  gulp.src ["#{config.src}/**/*.jpg", "#{config.src}/**/*.png"], read: no
-    .pipe do rimraf
+   
+gulp.task "cleanTiny", (cb) ->
+  del ["#{config.src}/**/*.jpg", "#{config.src}/**/*.png"], cb

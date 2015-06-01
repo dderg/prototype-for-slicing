@@ -8,4 +8,4 @@ gulp        = require "gulp"
 runSequence = require "run-sequence"
 
 gulp.task "build", (cb) ->
-  runSequence "fonts", "jade", "stylus", "coffee", "tiny", cb
+  runSequence "fonts", "jade", "stylus", "js", "tiny", cb
