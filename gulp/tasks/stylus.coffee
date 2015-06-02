@@ -22,13 +22,14 @@ mainBowerFiles      = require "main-bower-files"
 minify              = require "gulp-minify-css"
 cssBase64           = require "gulp-css-base64"
 concat              = require "gulp-concat"
+nib                 = require "nib"
 
 config              = require("../config").stylus
 
 
 gulp.task "stylus", ->
   gulp.src config.src
-    .pipe do stylus
+    .pipe stylus use: nib
     .pipe do autoprefixer
     .pipe do combineMediaQueries
     .pipe addsrc.prepend(mainBowerFiles())
