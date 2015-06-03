@@ -49,7 +49,7 @@ module.exports =
     dest: dist
 
   js:
-    src: "#{src}/js/main.js"
+    src: "#{src}/js/main.es6"
     destName: "all.js"
     dest: "#{dist}/js"
     transform: ["babelify"]
