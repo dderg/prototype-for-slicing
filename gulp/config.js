@@ -49,7 +49,7 @@ module.exports = {
         host: "",
         user: "",
         pass: "",
-        remotePath: "/var/www/fmake/data/www/front-end.fmake.ru/future_new"
+        remotePath: "/var/www/fmake/data/www/front-end.fmake.ru"
     },
     jade: {
         src: src + "/jade",
