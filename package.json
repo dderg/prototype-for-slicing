@@ -10,7 +10,6 @@
   "license": "ISC",
   "devDependencies": {
     "babelify": "^6.1.2",
-    "coffee-script": "^1.9.3",
     "del": "^1.2.0",
     "gulp": "^3.8.11",
     "gulp-add-src": "^0.2.0",
