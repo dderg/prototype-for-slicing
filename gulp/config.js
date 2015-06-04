@@ -13,8 +13,8 @@ module.exports = {
             compatibility: "ie9"
         },
         resultName: "all.css",
-        src: "#{src}/styl/main.styl",
-        dest: "#{dist}/css"
+        src: src + "/styl/main.styl",
+        dest: dist + "/css"
     },
     browserSync: {
         server: {
@@ -32,33 +32,33 @@ module.exports = {
         dest: dist
     },
     fonts: {
-        cssDest: "#{dist}/css",
-        fontsDest: "#{dist}/fonts",
-        src: "#{src}/fonts"
+        cssDest: dist + "/css",
+        fontsDest: dist + "/fonts",
+        src: src + "/fonts"
     },
     tiny: {
-        src: "#{src}/toTiny",
-        dest: "#{src}/images",
+        src: src + "/toTiny",
+        dest: src + "/images",
         apikey: "CrKRqfc7Q8-r-MpAro6PhQNoukdI9wh1"
     },
     images: {
-        src: "#{src}/images/**/*",
-        dest: "#{dist}/images"
+        src: src + "/images/**/*",
+        dest: dist + "/images"
     },
     sftp: {
-        host: "",
-        user: "",
+        host: "front-end.fmake.ru",
+        user: "prog",
         pass: "",
-        remotePath: "/var/www/fmake/data/www/front-end.fmake.ru"
+        remotePath: "/var/www/fmake/data/www/front-end.fmake.ru/future_new"
     },
     jade: {
-        src: "#{src}/jade",
+        src: src + "/jade",
         dest: dist
     },
     js: {
-        src: "#{src}/js/main.es6",
+        src: src + "/js/main.es6",
         destName: "all.js",
-        dest: "#{dist}/js",
+        dest: dist + "/js",
         transform: ["babelify"],
         extensions: [".es6"]
     },

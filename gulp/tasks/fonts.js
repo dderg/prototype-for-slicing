@@ -16,17 +16,17 @@ var gulp      = require('gulp'),
     config    = require('../config').fonts;
 
 gulp.task('fonts', function () {
-    gulp.src('#{config.src}/fonts.styl')
+    gulp.src(config.src + '/fonts.styl')
         .pipe(stylus())
         .pipe(cssBase64())
         .pipe(minify())
         .pipe(gulp.dest(config.cssDest));
 
-    gulp.src('#{config.src}/fonts_ie8.styl')
+    gulp.src(config.src + '/fonts_ie8.styl')
         .pipe(stylus())
         .pipe(minify())
         .pipe(gulp.dest(config.cssDest));
     
-    gulp.src(['#{config.src}/*', '!#{config.src}/*.css', '!#{config.src}/*.styl'])
+    gulp.src([config.src + '/*', '!' + config.src + '/*.css', '!' + config.src + '/*.styl'])
         .pipe(gulp.dest(config.fontsDest));
 });

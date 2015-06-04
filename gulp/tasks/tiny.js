@@ -18,11 +18,11 @@ gulp.task('tiny', function () {
 });
 
 gulp.task('compress', function () {
-    gulp.src(['#{config.src}/**/*.jpg', '#{config.src}/**/*.png'])
+    gulp.src([config.src + '/**/*.jpg', config.src + '/**/*.png'])
         .pipe(tinypng(config.apikey))
         .pipe(gulp.dest(config.dest));
 });
    
 gulp.task('cleanTiny', function (cb) {
-    del(['#{config.src}/**/*.jpg', '#{config.src}/**/*.png'], cb);
+    del([config.src + '/**/*.jpg', config.src + '/**/*.png'], cb);
 });

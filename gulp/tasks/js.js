@@ -27,4 +27,5 @@ gulp.task('js', function (cb) {
         .pipe(gulpif(global.production, uglify()))
         .pipe(gulp.dest(config.dest))
         .pipe(reload({stream: true}));
+    cb();
 });
