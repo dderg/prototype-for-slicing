@@ -46,8 +46,8 @@ module.exports = {
         dest: dist + "/images"
     },
     sftp: {
-        host: "front-end.fmake.ru",
-        user: "prog",
+        host: "",
+        user: "",
         pass: "",
         remotePath: "/var/www/fmake/data/www/front-end.fmake.ru/future_new"
     },
