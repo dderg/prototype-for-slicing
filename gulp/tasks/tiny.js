@@ -18,7 +18,7 @@ gulp.task('tiny', function () {
 });
 
 gulp.task('compress', function () {
-    gulp.src([config.src + '/**/*.jpg', config.src + '/**/*.png'])
+    return gulp.src([config.src + '/**/*.jpg', config.src + '/**/*.png'])
         .pipe(tinypng(config.apikey))
         .pipe(gulp.dest(config.dest));
 });
