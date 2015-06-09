@@ -11,6 +11,6 @@ var gulp   = require('gulp'),
     config = require('../config').images;
 
 gulp.task('images', function () {
-    gulp.src(config.src)
+    return gulp.src(config.src)
         .pipe(gulp.dest(config.dest));
 });

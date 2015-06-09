@@ -12,6 +12,6 @@ var gulp   = require('gulp'),
     config = require('../config').sftp;
 
 gulp.task('sftp', function () {
-    gulp.src('dist/**/*')
+    return gulp.src('dist/**/*')
         .pipe(sftp(config));
 });

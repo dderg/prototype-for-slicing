@@ -17,8 +17,8 @@ var gulp        = require('gulp'),
     config      = require('../config').js;
 
 
-gulp.task('js', function (cb) {
-    gulp.src(config.src, {read: false})
+gulp.task('js', function () {
+    return gulp.src(config.src, {read: false})
         .pipe(browserify({
             transform: config.transform,
             extensions: config.extensions
@@ -27,5 +27,4 @@ gulp.task('js', function (cb) {
         .pipe(gulpif(global.production, uglify()))
         .pipe(gulp.dest(config.dest))
         .pipe(reload({stream: true}));
-    cb();
 });

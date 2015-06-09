@@ -14,7 +14,7 @@ var gulp        = require('gulp'),
     config      = require('../config').jade;
 
 gulp.task('jade', function () {
-    gulp.src([config.src + '/**/*.jade', '!' + config.src + '/_**/*.jade'])
+    return gulp.src([config.src + '/**/*.jade', '!' + config.src + '/_**/*.jade'])
         .pipe(jade({pretty: true}))
         .pipe(gulp.dest(config.dest))
         .pipe(reload({stream: true}));
