@@ -29,7 +29,7 @@ var gulp                = require('gulp'),
     config              = require('../config').stylus;
 
 gulp.task('stylus', function () {
-    rutern gulp.src(config.src)
+    return gulp.src(config.src)
         .pipe(sourcemaps.init())
         .pipe(stylus({use: nib}))
         .pipe(autoprefixer())
