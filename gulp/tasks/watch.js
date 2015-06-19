@@ -12,6 +12,6 @@ var gulp   = require('gulp'),
 
 gulp.task('watch', function () {
     gulp.watch(config.src + '/styl/**/*.styl', ['stylus']);
-    gulp.watch(config.src + '/js/**/*.es6', ['js']);
+    gulp.watch(config.src + '/js/**/*.js', ['js']);
     gulp.watch(config.src + '/jade/**/*.jade', ['jade']);
 });

@@ -25,12 +25,10 @@ var gulp                = require('gulp'),
     cssBase64           = require('gulp-css-base64'),
     concat              = require('gulp-concat'),
     nib                 = require('nib'),
-    sourcemaps          = require('gulp-sourcemaps'),
     config              = require('../config').stylus;
 
 gulp.task('stylus', function () {
     return gulp.src(config.src)
-        .pipe(sourcemaps.init())
         .pipe(stylus({use: nib}))
         .pipe(autoprefixer())
         .pipe(combineMediaQueries())
@@ -39,7 +37,6 @@ gulp.task('stylus', function () {
         .pipe(filter('*.css'))
         .pipe(concat(config.resultName))
         .pipe(gulpif(global.production, minify({compatibility: config.minify.compatibility, noAdvanced: true})))
-        .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(config.dest))
         .pipe(reload({stream: true}));
 });

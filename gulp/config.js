@@ -56,11 +56,11 @@ module.exports = {
         dest: dist
     },
     js: {
-        src: src + "/js/main.es6",
+        src: src + "/js/main.js",
         destName: "all.js",
         dest: dist + "/js",
         transform: ["babelify"],
-        extensions: [".es6"]
+        extensions: [".js"]
     },
     watch: {
         src: src
