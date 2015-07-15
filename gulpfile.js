@@ -13,5 +13,9 @@ gulp.task('release', function () {
 
 
 gulp.task('default', function () {
+	runSequence('build', 'watch');
+});
+
+gulp.task('serve', function() {
 	runSequence('browser-sync', 'build', 'watch');
 });

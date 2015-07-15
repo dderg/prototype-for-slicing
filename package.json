@@ -32,5 +32,8 @@
     "nib": "^1.1.0",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.0.2"
+  },
+  "scripts": {
+    "setup": "bower install && npm i && npm i browser-sync"
   }
 }
