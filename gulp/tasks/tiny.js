@@ -14,7 +14,7 @@ var gulp        = require('gulp'),
     config      = require('../config').tiny;
 
 gulp.task('tiny', function () {
-    runSequence('compress', ['cleanTiny', 'images']);
+    return runSequence('compress', ['cleanTiny', 'images']);
 });
 
 gulp.task('compress', function () {
@@ -24,5 +24,5 @@ gulp.task('compress', function () {
 });
    
 gulp.task('cleanTiny', function (cb) {
-    del([config.src + '/**/*.jpg', config.src + '/**/*.png'], cb);
+    return del([config.src + '/**/*.jpg', config.src + '/**/*.png'], cb);
 });
