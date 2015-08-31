@@ -56,7 +56,7 @@ module.exports = {
         dest: dist
     },
     js: {
-        src: src + "/js/main.js",
+        src: src + "/js/index.js",
         destName: "all.js",
         dest: dist + "/js",
         transform: ["babelify"],
@@ -64,5 +64,8 @@ module.exports = {
     },
     watch: {
         src: src
+    },
+        jshint: {
+        src: src + "/js/**/*.js"
     }
 };

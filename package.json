@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "setup": "bower install && npm i && npm i browser-sync"
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +22,9 @@
     "gulp-filter": "^2.0.2",
     "gulp-if": "^1.2.5",
     "gulp-jade": "^0.11.0",
+    "gulp-jscs": "^2.0.0",
+    "gulp-jscs-stylish": "^1.1.2",
+    "gulp-jshint": "^1.11.2",
     "gulp-minify-css": "^0.4.0",
     "gulp-notify": "^2.2.0",
     "gulp-sftp": "^0.1.4",
@@ -32,8 +35,5 @@
     "nib": "^1.1.0",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.0.2"
-  },
-  "scripts": {
-    "setup": "bower install && npm i && npm i browser-sync"
   }
 }
