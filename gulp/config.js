@@ -58,9 +58,7 @@ module.exports = {
     js: {
         src: src + "/js/index.js",
         destName: "all.js",
-        dest: dist + "/js",
-        transform: ["babelify"],
-        extensions: [".js"]
+        dest: dist + "/js"
     },
     watch: {
         src: src
