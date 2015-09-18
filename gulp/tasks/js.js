@@ -51,5 +51,6 @@ function bundle() {
         .pipe(source(config.destName))
         .pipe(buffer())
         .pipe(gulpif(global.production, uglify()))
-        .pipe(gulp.dest(config.dest));
+        .pipe(gulp.dest(config.dest))
+        .pipe(reload({stream:true}));
 }
