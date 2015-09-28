@@ -12,6 +12,7 @@ gulp.task('release', function () {
 });
 
 gulp.task('default', function () {
+    global.production = true;
     runSequence('build', 'watch');
 });
 
