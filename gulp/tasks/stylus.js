@@ -16,7 +16,7 @@ var reload              = browserSync.reload;
 var gulpif              = require('gulp-if');
 var stylus              = require('gulp-stylus');
 var autoprefixer        = require('gulp-autoprefixer');
-var combineMediaQueries = require('gulp-combine-media-queries');
+var combineMq = require('gulp-combine-mq');
 var addsrc              = require('gulp-add-src');
 var filter              = require('gulp-filter');
 var mainBowerFiles      = require('main-bower-files');
@@ -30,7 +30,7 @@ gulp.task('stylus', function () {
     return gulp.src(config.src)
         .pipe(stylus({use: nib}))
         .pipe(autoprefixer())
-        .pipe(combineMediaQueries())
+        .pipe(combineMq())
         .pipe(addsrc.prepend(mainBowerFiles()))
         .pipe(filter('*.css'))
         .pipe(cssBase64({maxWeightResource: config.base64.maxWeight}))
