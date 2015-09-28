@@ -9,11 +9,11 @@
 // А для современных браузеров берется только .woff и кодируется в base64
 // Сами файлы шрифтов просто копируются в папку назначения
 
-var gulp      = require('gulp'),
-    minify    = require('gulp-minify-css'),
-    cssBase64 = require('gulp-css-base64'),
-    stylus    = require('gulp-stylus'),
-    config    = require('../config').fonts;
+var gulp      = require('gulp');
+var minify    = require('gulp-minify-css');
+var cssBase64 = require('gulp-css-base64');
+var stylus    = require('gulp-stylus');
+var config    = require('../config').fonts;
 
 gulp.task('fonts', function () {
     gulp.src(config.src + '/fonts.styl')
@@ -26,7 +26,6 @@ gulp.task('fonts', function () {
         .pipe(stylus())
         .pipe(minify())
         .pipe(gulp.dest(config.cssDest));
-    
     gulp.src([config.src + '/*', '!' + config.src + '/*.css', '!' + config.src + '/*.styl'])
         .pipe(gulp.dest(config.fontsDest));
 });

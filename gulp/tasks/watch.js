@@ -7,8 +7,8 @@
 
 // Следит за изменениями в файлах
 
-var gulp   = require('gulp'),
-    config = require('../config').watch;
+var gulp   = require('gulp');
+var config = require('../config').watch;
 
 gulp.task('watch', function () {
     gulp.watch(config.src + '/styl/**/*.styl', ['stylus']);

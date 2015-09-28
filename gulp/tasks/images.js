@@ -7,8 +7,8 @@
 
 // Просто копирует картинки в папку назначения
 
-var gulp   = require('gulp'),
-    config = require('../config').images;
+var gulp   = require('gulp');
+var config = require('../config').images;
 
 gulp.task('images', function () {
     return gulp.src(config.src)

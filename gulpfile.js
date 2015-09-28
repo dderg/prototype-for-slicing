@@ -1,21 +1,20 @@
 /*jslint node:true */
 'use strict';
-var gulp        = require('gulp'),
-    requireDir  = require('require-dir'),
-    runSequence = require('run-sequence');
+var gulp        = require('gulp');
+var requireDir  = require('require-dir');
+var runSequence = require('run-sequence');
 
-requireDir('./gulp/tasks', { recurse: true });
+requireDir('./gulp/tasks', {recurse: true});
 
 gulp.task('release', function () {
-	global.production = true;
-	runSequence('build', 'sftp');
+    global.production = true;
+    runSequence('build', 'sftp');
 });
-
 
 gulp.task('default', function () {
-	runSequence('build', 'watch');
+    runSequence('build', 'watch');
 });
 
-gulp.task('serve', function() {
-	runSequence('browser-sync', 'build', 'watch');
+gulp.task('serve', function () {
+    runSequence('browser-sync', 'build', 'watch');
 });

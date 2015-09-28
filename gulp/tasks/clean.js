@@ -7,9 +7,9 @@
 
 // Очищает папку сгенерированных файлов
 
-var gulp   = require('gulp'),
-    del    = require('del'),
-    config = require('../config').clean;
+var gulp   = require('gulp');
+var del    = require('del');
+var config = require('../config').clean;
 
 gulp.task('clean', function (cb) {
     del(config.dest, cb);

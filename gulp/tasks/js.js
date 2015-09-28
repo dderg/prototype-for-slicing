@@ -7,21 +7,20 @@
 
 // Компилирует ES2015 в ES5, подключая все зависимости с помощью browserify
 
-var gulp        = require('gulp'),
-    gulpif      = require('gulp-if'),
-    watchify    = require('watchify'),
-    assign      = require('lodash.assign'),
-    browserify  = require('browserify'),
-    uglify      = require('gulp-uglify'),
-    concat      = require('gulp-concat'),
-    browserSync = require('browser-sync'),
-    buffer      = require('vinyl-buffer'),
-    source      = require('vinyl-source-stream'),
-    babelify    = require('babelify'),
-    gutil       = require('gulp-util'),
-    reload      = browserSync.reload,
-    config      = require('../config').js;
-
+var gulp        = require('gulp');
+var gulpif      = require('gulp-if');
+var watchify    = require('watchify');
+var assign      = require('lodash.assign');
+var browserify  = require('browserify');
+var uglify      = require('gulp-uglify');
+var concat      = require('gulp-concat');
+var browserSync = require('browser-sync');
+var buffer      = require('vinyl-buffer');
+var source      = require('vinyl-source-stream');
+var babelify    = require('babelify');
+var gutil       = require('gulp-util');
+var reload      = browserSync.reload;
+var config      = require('../config').js;
 
 var customOpts = {
     entries: [config.src],
@@ -34,7 +33,7 @@ if (global.production) {
     b = browserify(customOpts);
 } else {
     var opts = assign({}, watchify.args, customOpts);
-    b = watchify(browserify(opts)); 
+    b = watchify(browserify(opts));
 }
 
 // add transformations here

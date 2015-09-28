@@ -8,12 +8,11 @@
 // проверяет на стиль js-ки
 // правила берутся из .jscsrc
 
-var gulp    = require('gulp'),
-    jscs    = require('gulp-jscs'),
-    stylish = require('gulp-jscs-stylish'),
-    noop    = function () {},
-    config  = require('../config').jshint;
-
+var gulp    = require('gulp');
+var jscs    = require('gulp-jscs');
+var stylish = require('gulp-jscs-stylish');
+var noop    = function () {};
+var config  = require('../config').jshint;
 
 gulp.task('jscs', function () {
     return gulp.src(config.src)

@@ -7,10 +7,9 @@
 
 // Линтует js-ки
 
-var gulp   = require('gulp'),
-    jshint = require('gulp-jshint'),
-    config = require('../config').jshint;
-
+var gulp   = require('gulp');
+var jshint = require('gulp-jshint');
+var config = require('../config').jshint;
 
 gulp.task('jshint', function () {
     return gulp.src(config.src)

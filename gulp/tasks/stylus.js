@@ -10,22 +10,21 @@
 // Кодирует небольшие картинки в base64
 // Подставляет вендорные префиксы
 
-
-var gulp                = require('gulp'),
-    browserSync         = require('browser-sync'),
-    reload              = browserSync.reload,
-    gulpif              = require('gulp-if'),
-    stylus              = require('gulp-stylus'),
-    autoprefixer        = require('gulp-autoprefixer'),
-    combineMediaQueries = require('gulp-combine-media-queries'),
-    addsrc              = require('gulp-add-src'),
-    filter              = require('gulp-filter'),
-    mainBowerFiles      = require('main-bower-files'),
-    minify              = require('gulp-minify-css'),
-    cssBase64           = require('gulp-css-base64'),
-    concat              = require('gulp-concat'),
-    nib                 = require('nib'),
-    config              = require('../config').stylus;
+var gulp                = require('gulp');
+var browserSync         = require('browser-sync');
+var reload              = browserSync.reload;
+var gulpif              = require('gulp-if');
+var stylus              = require('gulp-stylus');
+var autoprefixer        = require('gulp-autoprefixer');
+var combineMediaQueries = require('gulp-combine-media-queries');
+var addsrc              = require('gulp-add-src');
+var filter              = require('gulp-filter');
+var mainBowerFiles      = require('main-bower-files');
+var minify              = require('gulp-minify-css');
+var cssBase64           = require('gulp-css-base64');
+var concat              = require('gulp-concat');
+var nib                 = require('nib');
+var config              = require('../config').stylus;
 
 gulp.task('stylus', function () {
     return gulp.src(config.src)

@@ -7,11 +7,11 @@
 
 // Компилирует Jade файлы в HTML
 
-var gulp        = require('gulp'),
-    jade        = require('gulp-jade'),
-    browserSync = require('browser-sync'),
-    reload      = browserSync.reload,
-    config      = require('../config').jade;
+var gulp        = require('gulp');
+var jade        = require('gulp-jade');
+var browserSync = require('browser-sync');
+var reload      = browserSync.reload;
+var config      = require('../config').jade;
 
 gulp.task('jade', function () {
     return gulp.src([config.src + '/**/*.jade', '!' + config.src + '/_**/*.jade'])
