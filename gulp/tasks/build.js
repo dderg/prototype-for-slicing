@@ -11,5 +11,5 @@ var gulp        = require('gulp');
 var runSequence = require('run-sequence');
 
 gulp.task('build', function (cb) {
-    runSequence('fonts', 'jade', 'stylus', 'jshint', 'jscs', 'js', 'tiny', cb);
+    return runSequence('fonts', 'jade', 'stylus', 'jshint', 'jscs', 'js', 'tiny', cb);
 });
