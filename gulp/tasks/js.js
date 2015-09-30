@@ -29,27 +29,29 @@ var customOpts = {
     extensions: ['.js']
 };
 var b;
-if (global.production) {
-    b = browserify(customOpts);
-} else {
-    var opts = assign({}, watchify.args, customOpts);
-    b = watchify(browserify(opts));
-}
 
-// add transformations here
-// i.e. b.transform(coffeeify);
+gulp.task('js', function () {
+    if (global.production) {
+        b = browserify(customOpts);
+    } else {
+        var opts = assign({}, watchify.args, customOpts);
+        b = watchify(browserify(opts));
+    }
 
-gulp.task('js', bundle); // so you can run `gulp js` to build the file
-b.on('update', bundle); // on any dep update, runs the bundler
-b.on('log', gutil.log); // output build logs to terminal
+    // add transformations here
+    // i.e. b.transform(coffeeify);
 
-function bundle() {
-    return b.bundle()
-        // log errors if they happen
-        .on('error', gutil.log.bind(gutil, 'Browserify Error'))
-        .pipe(source(config.destName))
-        .pipe(buffer())
-        .pipe(gulpif(global.production, uglify()))
-        .pipe(gulp.dest(config.dest))
-        .pipe(reload({stream:true}));
-}
+    b.on('update', bundle); // on any dep update, runs the bundler
+    b.on('log', gutil.log); // output build logs to terminal
+
+    function bundle() {
+        return b.bundle()
+            // log errors if they happen
+            .on('error', gutil.log.bind(gutil, 'Browserify Error'))
+            .pipe(source(config.destName))
+            .pipe(buffer())
+            .pipe(gulpif(global.production, uglify()))
+            .pipe(gulp.dest(config.dest))
+            .pipe(reload({stream:true}));
+    }
+});
