@@ -16,6 +16,11 @@ gulp.task('default', function () {
     runSequence('build', 'watch');
 });
 
+gulp.task('compile', function () {
+    global.production = true;
+    runSequence('build');
+});
+
 gulp.task('serve', function () {
     runSequence('browser-sync', 'build', 'watch');
 });
