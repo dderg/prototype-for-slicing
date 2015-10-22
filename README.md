@@ -2,7 +2,7 @@
 ### simple usage:
 ```
 npm run setup
-gulp
+gulp serve
 ```
 
 ### advanced
