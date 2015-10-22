@@ -54,4 +54,5 @@ gulp.task('js', function () {
             .pipe(gulp.dest(config.dest))
             .pipe(reload({stream:true}));
     }
+    bundle();
 });
