@@ -29,6 +29,10 @@ var config              = require('../config').stylus;
 gulp.task('stylus', function () {
     return gulp.src(config.src)
         .pipe(stylus({use:[nib()]}))
+        .on('error', function (error) {
+            console.log(error.toString());
+            this.emit('end');
+        })
         .pipe(autoprefixer())
         .pipe(combineMq())
         .pipe(addsrc.prepend(mainBowerFiles()))
