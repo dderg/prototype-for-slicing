@@ -28,7 +28,7 @@ var config              = require('../config').stylus;
 
 gulp.task('stylus', function () {
     return gulp.src(config.src)
-        .pipe(stylus({use: nib}))
+        .pipe(stylus({use:[nib()]}))
         .pipe(autoprefixer())
         .pipe(combineMq())
         .pipe(addsrc.prepend(mainBowerFiles()))
